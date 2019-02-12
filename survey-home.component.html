@@ -1,0 +1,46 @@
+<!--/******************************************************************************************************************
+ * Language: Angular
+ * Template: SurveyHomeComponent.html
+ * Description: This template is at the UI layer of the application and makes use of properties from typescript class
+                SurveyHomeComponent to get the Customer and Survey details stored in local instance. It contains left navigtion where customers list and their corresponding surveys are displayed in the accordian created using Twitter Bootstrap. It also acts as the parent component that loads child components depending on the link clicked by the user.
+ ***********************************************************************************************************************
+ -->
+
+<div class="row mb-3 surveyHome">
+  <div class="accordion col-sm-3" id="accordionExample">
+    <!--Loop over the list of customers-->
+    <div class="card" *ngFor="let customer of customers; index as i; first as isFirst">
+      <div class="card-header" id="{{'heading' + i}}">
+        <h2 class="mb-0">
+          <button class="btn" type="button" data-toggle="collapse" [attr.data-target]="'#collapse' + i"  aria-expanded="true" aria-controls="collapseOne">
+              {{customer.customer_name}} <!--To display customer names-->
+          </button>
+        </h2>
+      </div>
+      <div id="{{'collapse'+i}}" [ngClass]="{'collapse' : true, 'show' : i == 0}" [attr.aria-labelledby]="'heading' + i" data-parent="#accordionExample" >
+        <!--Loop over all the surveys available for corresponding customer-->
+        <div class="card-body" *ngFor="let survey of customer.surveys">
+          <a [routerLink]="['survey', customer.customer_id, survey.survey_id]" [queryParams]="{isSubmitted : 'false'}">{{survey.survey_name}}</a><!--To display surveys for the corresponding customer-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Loads child components in this section-->
+  <section class="survey_detail col-sm-9 p-3">
+    <!--Display the details of surveys completed by logged in user-->
+    <div class="clearfix mb-3">
+      <a routerLink="surveyList" class="float-left">Home</a>
+        <div class="float-right signout">
+          <span>
+            Welcome {{username}}
+          </span>
+          <a (click)="signOut()" class="float-right">[Sign out]</a>
+        </div>
+      </div>
+      <!--Placeholder for child components to load-->
+      <router-outlet></router-outlet>
+  </section>
+  <section class="all_completed col-sm-12">
+    <!--In-progress development-->
+  </section>
+</div>
