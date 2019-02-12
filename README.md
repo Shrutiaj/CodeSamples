@@ -1,4 +1,4 @@
-# CodeSamples
+# Project Description
 
 These files are the part of the project "Survey Application", where upon login user can see and navigate the list of different organizations and their corresponding surveys, take the surveys and submit and update them. This application is developed in Angular and it makes use of the REST API developed using Java/J2EE alongwith Maven and Spring boot framework. The REST API application pulls the code from MySQL server database and provides it to the Angular application.
 
