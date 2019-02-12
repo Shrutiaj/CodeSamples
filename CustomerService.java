@@ -2,7 +2,10 @@
  * Language: Java
  * Framework: Spring Boot
  * Class: CustomerService
- * Description: This class is at the service layer of the application and loads JDBC driver to connect to the MySQL                     database and fetch the list of customers and their corresponding surveys. This code exposes the REST API                to be consumed at the presentation layer of the front-end application. It structures the data in the                    JSON format and provides it to the front-end application.
+ * Description: This class is at the service layer of the application and loads JDBC driver to connect to the MySQL                     
+                database and fetch the list of customers and their corresponding surveys. This code exposes the REST API              
+		to be consumed at the presentation layer of the front-end application. It structures the data in the                    
+		JSON format and provides it to the front-end application.
  ***********************************************************************************************************************/
 
 package service;
